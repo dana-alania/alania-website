@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dana Alania | BIO</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/animation.css" />
+  </head>
+  <body>
+    <div class="gradient-background">
+      <div class="grid-overlay"></div>
+      <div class="grid-overlay"></div>
+    </div>
+      <div class="particles-container" id="particles-container"></div>
+    </div>
+
+    <nav class="navbar">
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" target="_blank" rel="noopener noreferrer">Home</a></li>
+        <li><a href="bio.html">Bio</a></li>
+        <li><a href="portfolio.html" target="_blank" rel="noopener noreferrer">Works</a></li>
+      </ul>
+
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+
+
+
+    <footer class="social-bar">
+      <div class="pink-line"></div>
+      <div class="social-icons">
+        <div class="copy-wrapper" onclick="copyEmail(this)" data-email="yourname@gmail.com">
+    <i data-lucide="mail"></i>
+    <span class="tooltip" id="myTooltip">Copy Email</span>
+  </div>
+        <a href="https://www.linkedin.com/in/dana-alania-8404443b8/" target="_blank" rel="noopener noreferrer"><i data-lucide="linkedin"></i></a>
+        <a href="https://github.com/dana-alania" target="_blank" rel="noopener noreferrer"><i data-lucide="github"></i></a>
+      </div>
+    </footer>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+    <script>
+      lucide.createIcons();
+
+      window.addEventListener("load", () => {});
+    </script>
+
+    <script src="./assets/js/animation.js"></script>
+    <script src="./assets/js/main.js"></script>
+  </body>
+</html>

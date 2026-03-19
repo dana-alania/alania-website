@@ -1,0 +1,143 @@
+.gradient-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.gradient-sphere {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+}
+
+.noise-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.025;
+  z-index: 5;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+@keyframes float-1 {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    transform: translate(10%, 10%) scale(1.1);
+  }
+}
+
+@keyframes float-2 {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    transform: translate(-10%, -5%) scale(1.15);
+  }
+}
+
+@keyframes float-3 {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translate(-5%, 10%) scale(1.05);
+    opacity: 0.6;
+  }
+}
+
+.grid-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: 40px 40px;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  z-index: 2;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.3;
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+  100% {
+    opacity: 0.7;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+.particles-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  background: #ff2af1;
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.pink-blob {
+  will-change: transform, filter;
+  position: absolute;
+  border-radius: 50%;
+
+  bottom: -25vh;
+  right: -10vw;
+  width: 60vw;
+  height: 60vw;
+
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 42, 241, 0.4) 0%,
+    rgba(255, 42, 241, 0.15) 40%,
+    transparent 80%
+  );
+
+  mix-blend-mode: screen;
+
+  filter: blur(120px);
+  opacity: 0.6;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.grid-overlay {
+  z-index: 2;
+}
+
+.pink-blob-light {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 30vw;
+  height: 30vw;
+  background: radial-gradient(circle, rgba(255, 42, 241, 0.2), transparent 70%);
+  filter: blur(60px);
+  z-index: 3;
+  pointer-events: none;
+}
+
+.gradient-background,
+.particles-container {
+  pointer-events: none;
+}
