@@ -83,6 +83,18 @@ document.addEventListener("DOMContentLoaded", () => {
         ease: "power3.out",
       },
       "-=0.5",
+    )
+    .from(
+      ".work-card",
+      {
+        y: 50,
+        opacity: 0,
+        stagger: 0.15,
+        duration: 1,
+        ease: "power4.out",
+        clearProps: "all",
+      },
+      "-=0.5",
     );
 
   const menuTl = gsap.timeline({ paused: true });
@@ -104,8 +116,6 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       "-=0.2",
     );
-
-  // --- 5. EVENT LISTENERS ---
 
   hamburger.addEventListener("click", () => {
     hamburger.classList.toggle("active");

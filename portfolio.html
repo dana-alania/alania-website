@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dana Alania | WORKS</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/portfolio.css" />
+    <link rel="stylesheet" href="assets/css/animation.css" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+  </head>
+  <body>
+    <div class="gradient-background">
+      <div class="grid-overlay"></div>
+      <div class="code-background" id="code-background"></div>
+      <div class="particles-container" id="particles-container"></div>
+    </div>
+
+    <nav class="navbar">
+      <ul class="nav-links" id="nav-links">
+        <li>
+          <a href="index.html" target="_blank" rel="noopener noreferrer"
+            >Home</a
+          >
+        </li>
+        <li><a href="bio.html">Bio</a></li>
+        <li>
+          <a href="portfolio.html" target="_blank" rel="noopener noreferrer"
+            >Portfolio</a
+          >
+        </li>
+      </ul>
+
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+
+    <main class="works-page">
+      <div class="works-header">
+        <h1 class="main-title">PORTFOLIO</h1>
+      </div>
+      <!---placeholders-->
+      <div class="works-scroll-area">
+        <div class="works-grid-container">
+          <div class="work-card">
+            <div class="card-content">
+              <span class="work-category">WEB APP</span>
+              <h2 class="work-title">ADMIN DASHBOARD</h2>
+              <p class="work-description">
+                A high-performance dashboard featuring real-time data
+                visualization and customized CSS layouts.
+              </p>
+              <div class="work-stack">
+                <span>REACT</span>
+                <span>GSAP</span>
+                <span>NODE.JS</span>
+              </div>
+              <a href="https://github.com/dana-alania/project" class="work-link"
+                >VIEW PROJECT ↗</a
+              >
+            </div>
+          </div>
+
+          <div class="work-card">
+            <div class="card-content">
+              <span class="work-category">MOBILE APP</span>
+              <h2 class="work-title">TASK TRACKER</h2>
+              <p class="work-description">
+                Cross-platform mobile application built for optimized
+                productivity and seamless UI transitions.
+              </p>
+              <div class="work-stack">
+                <span>FLUTTER</span>
+                <span>FIREBASE</span>
+              </div>
+              <a href="#" class="work-link">VIEW PROJECT ↗</a>
+            </div>
+          </div>
+        </div>
+        <div class="scroll-buffer"></div>
+      </div>
+    </main>
+
+    <footer class="social-bar">
+      <div class="pink-line"></div>
+      <div class="social-icons">
+        <div
+          class="copy-wrapper"
+          onclick="copyEmail(this)"
+          data-email="yourname@gmail.com"
+        >
+          <i data-lucide="mail"></i>
+          <span class="tooltip" id="myTooltip">Copy Email</span>
+        </div>
+        <a
+          href="https://www.linkedin.com/in/dana-alania-8404443b8/"
+          target="_blank"
+          rel="noopener noreferrer"
+          ><i data-lucide="linkedin"></i
+        ></a>
+        <a
+          href="https://github.com/dana-alania"
+          target="_blank"
+          rel="noopener noreferrer"
+          ><i data-lucide="github"></i
+        ></a>
+      </div>
+    </footer>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+    <script>
+      lucide.createIcons();
+
+      window.addEventListener("load", () => {});
+    </script>
+    <script src="./assets/js/main.js"></script>
+  </body>
+</html>
