@@ -134,16 +134,6 @@ svg.lucide {
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.content-container {
-  position: relative;
-  z-index: 10;
-  text-align: left;
-  padding: 2rem;
-  width: 100%;
-  max-width: none;
-  overflow: visible;
-}
-
 /* bio */
 .bio-page {
   position: relative;
@@ -243,7 +233,7 @@ svg.lucide {
   color: var(--grey);
   font-size: 1rem;
   line-height: 1.6;
-  margin-bottom: 0.5rem;
+
   text-transform: uppercase;
   letter-spacing: 2px;
   opacity: 0.9;

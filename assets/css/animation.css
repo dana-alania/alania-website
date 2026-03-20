@@ -141,3 +141,10 @@
 .particles-container {
   pointer-events: none;
 }
+
+.particle,
+.code-snippet {
+  pointer-events: none;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
