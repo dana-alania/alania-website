@@ -199,7 +199,8 @@ svg.lucide {
   position: relative;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   overflow: hidden;
-  height: clamp(300px, 50vh, 450px);
+  height: fit-content;
+  height: clamp(300px, 50vh, 500px);
 }
 
 .work-card:hover {
@@ -220,7 +221,7 @@ svg.lucide {
 .work-title {
   font-family: var(--font-heading);
   color: white;
-  font-size: 0.8rem;
+  font-size: 1rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
@@ -228,7 +229,7 @@ svg.lucide {
 .work-description {
   font-family: var(--font-body);
   color: var(--grey);
-  font-size: 0.7rem;
+  font-size: 0.9rem;
   line-height: 1.6;
   margin-bottom: 2rem;
 }
@@ -237,7 +238,7 @@ svg.lucide {
   display: flex;
   flex-wrap: wrap;
   gap: 0.8rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .work-stack span {
