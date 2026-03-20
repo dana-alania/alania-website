@@ -112,6 +112,19 @@ document.addEventListener("DOMContentLoaded", () => {
     "socialBio+=0.3",
   );
 
+  const scanLine = document.getElementById("scan-line");
+
+  if (scanLine) {
+    gsap.to(scanLine, {
+      top: "100%",
+      duration: 6,
+      repeat: -1,
+      repeatDelay: 4,
+      ease: "none",
+      force3D: true,
+    });
+  }
+
   hamburger.addEventListener("click", () => {
     if (!menuTl) return;
     hamburger.classList.toggle("active");
