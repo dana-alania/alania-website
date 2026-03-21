@@ -186,7 +186,7 @@ function animateParticle(el) {
   gsap.to(el, {
     x: "random(-60, 60)",
     y: "random(-60, 60)",
-    opacity: "random(0.1, 0.3)",
+    opacity: "random(0.3, 0.3)",
     duration: "random(15, 25)",
     ease: "none",
     force3D: true, // Uses GPU
@@ -199,6 +199,9 @@ function createCodeFloating(bg) {
     "const dev = 'Dana Alania';",
     "npm install gsap",
     "git commit",
+    "npm install food",
+    "UI/UX Designer",
+    "Software Developer",
   ];
 
   for (let i = 0; i < 10; i++) {
