@@ -180,16 +180,13 @@ svg.lucide {
 }
 
 .bio-group {
-  max-height: 0;
+  display: none;
   overflow: hidden;
   opacity: 0;
+  height: 0;
   margin-bottom: 0;
   padding-left: 25px;
   border-left: 2px solid rgba(255, 42, 241, 0.3);
-  transition:
-    max-height 0.4s ease,
-    opacity 0.3s ease,
-    margin 0.3s ease;
 }
 
 .bio-content h3 {
@@ -244,13 +241,6 @@ svg.lucide {
   font-weight: 700;
 }
 
-.bio-group.is-visible {
-  max-height: 500px;
-  opacity: 1;
-  margin-bottom: 2rem;
-  padding-top: 0.5rem;
-}
-
 .toggle-header {
   cursor: pointer;
   display: flex;
@@ -258,6 +248,8 @@ svg.lucide {
   font-family: var(--font-heading);
   color: var(--pink);
   margin-top: 1rem;
+  transition: color 0.3s ease;
+  user-select: none;
 }
 
 .toggle-header::before {
@@ -269,6 +261,11 @@ svg.lucide {
 
 .toggle-header.active::before {
   transform: rotate(90deg);
+}
+
+.toggle-header.active {
+  color: var(--pink);
+  text-shadow: 0 0 10px var(--pink);
 }
 
 /* social bar */

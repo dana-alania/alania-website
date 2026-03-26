@@ -53,16 +53,18 @@ document.addEventListener("DOMContentLoaded", () => {
     defaults: { ease: "expo.out", duration: 1.2 },
   });
 
-  entranceTl
-    .from(".main-title", {
-      x: -70,
-      autoAlpha: 0,
-      filter: "blur(10px)",
-      duration: 1.5,
-    })
-    .from(".subtitle-group p", { y: 25, autoAlpha: 0, stagger: 0.2 }, "-=1");
+  if (document.querySelector(".main-title")) {
+    entranceTl
+      .from(".main-title", {
+        x: -70,
+        autoAlpha: 0,
+        filter: "blur(10px)",
+        duration: 1.5,
+      })
+      .from(".subtitle-group p", { y: 25, autoAlpha: 0, stagger: 0.2 }, "-=1");
+  }
 
-  if (window.innerWidth > 768) {
+  if (window.innerWidth > 768 && document.querySelector(".nav-links li")) {
     entranceTl.from(
       ".nav-links li",
       { y: -20, autoAlpha: 0, stagger: 0.1, ease: "power2.out" },
@@ -70,15 +72,19 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   }
 
-  entranceTl
-    .from(
+  if (document.querySelector(".pink-line")) {
+    entranceTl.from(
       ".pink-line",
       { scaleX: 0, transformOrigin: "left center", duration: 1.5 },
       "-=1",
-    )
-    .add("socialBio", "-=1")
-    .from(
-      ".social-icons > a, .social-icons > .copy-wrapper",
+    );
+  }
+
+  entranceTl.add("socialBio", "-=1");
+
+  if (document.querySelector(".social-icons a, .social-icons .copy-wrapper")) {
+    entranceTl.from(
+      ".social-icons a, .social-icons .copy-wrapper",
       {
         scale: 0.8,
         autoAlpha: 0,
@@ -89,6 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       "socialBio",
     );
+  }
 
   if (document.querySelector(".bio-scroll-container")) {
     entranceTl.from(
@@ -96,6 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
       { x: 60, autoAlpha: 0, filter: "blur(5px)", stagger: 0.2 },
       "socialBio",
     );
+    gsap.set(".bio-group", { display: "none", height: 0, opacity: 0 });
   }
 
   if (document.querySelector(".work-card")) {
@@ -106,11 +114,13 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   }
 
-  entranceTl.from(
-    ".btn-neon",
-    { y: 30, autoAlpha: 0, clearProps: "all" },
-    "socialBio+=0.3",
-  );
+  if (document.querySelector(".btn-neon")) {
+    entranceTl.from(
+      ".btn-neon",
+      { y: 30, autoAlpha: 0, clearProps: "all" },
+      "socialBio+=0.3",
+    );
+  }
 
   const scanLine = document.getElementById("scan-line");
 
@@ -123,6 +133,11 @@ document.addEventListener("DOMContentLoaded", () => {
       ease: "none",
       force3D: true,
     });
+  }
+
+  const title = document.querySelector(".main-title");
+  if (title) {
+    setTimeout(() => triggerGlitch(title), 5000);
   }
 
   hamburger.addEventListener("click", () => {
@@ -155,14 +170,45 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   function toggleSiblings(header, show) {
+    const nextElements = [];
     let next = header.nextElementSibling;
+
     while (next && !next.classList.contains("toggle-header")) {
       if (next.classList.contains("bio-group")) {
-        show
-          ? next.classList.add("is-visible")
-          : next.classList.remove("is-visible");
+        nextElements.push(next);
       }
       next = next.nextElementSibling;
+    }
+
+    gsap.killTweensOf(nextElements);
+
+    if (show) {
+      if (typeof playHoverSound === "function") playHoverSound();
+
+      gsap.set(nextElements, { display: "block" });
+
+      gsap.fromTo(
+        nextElements,
+        { height: 0, opacity: 0 },
+        {
+          height: "auto",
+          opacity: 1,
+          marginBottom: "1.5rem",
+          duration: 0.5,
+          ease: "expo.out",
+          stagger: 0.1,
+          force3D: true,
+        },
+      );
+    } else {
+      gsap.to(nextElements, {
+        height: 0,
+        opacity: 0,
+        marginBottom: 0,
+        duration: 0.3,
+        ease: "power2.in",
+        onComplete: () => gsap.set(nextElements, { display: "none" }),
+      });
     }
   }
 });
@@ -189,7 +235,7 @@ function animateParticle(el) {
     opacity: "random(0.3, 0.3)",
     duration: "random(15, 25)",
     ease: "none",
-    force3D: true, // Uses GPU
+    force3D: true,
     onComplete: () => animateParticle(el),
   });
 }
@@ -231,4 +277,68 @@ function copyEmail(element) {
     setTimeout(() => (tooltip.innerText = "Copy Email"), 1500);
   });
   gsap.to(element, { scale: 0.9, duration: 0.1, yoyo: true, repeat: 1 });
+}
+
+const playHoverSound = () => {
+  const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  const bufferSize = audioCtx.sampleRate * 0.02; // 20ms of sound
+  const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+  const data = buffer.getChannelData(0);
+
+  for (let i = 0; i < bufferSize; i++) {
+    data[i] = Math.random() * 2 - 1;
+  }
+
+  const noise = audioCtx.createBufferSource();
+  noise.buffer = buffer;
+
+  const gainNode = audioCtx.createGain();
+  gainNode.gain.setValueAtTime(0.03, audioCtx.currentTime);
+  gainNode.gain.exponentialRampToValueAtTime(
+    0.001,
+    audioCtx.currentTime + 0.02,
+  );
+
+  noise.connect(gainNode);
+  gainNode.connect(audioCtx.destination);
+
+  noise.start();
+};
+
+const interactiveElements = document.querySelectorAll(
+  ".nav-links a, .work-card, .social-icons a, .btn-neon",
+);
+
+interactiveElements.forEach((el) => {
+  el.addEventListener("mouseenter", () => {
+    if (window.getComputedStyle(el).opacity > 0) {
+      playHoverSound();
+    }
+  });
+});
+
+function triggerGlitch(element) {
+  if (!element) return;
+
+  const tl = gsap.timeline();
+
+  tl.to(element, {
+    duration: 0.1,
+    skewX: "random(-20, 20)",
+    x: "random(-10, 10)",
+    scale: 1.05,
+    color: "white",
+    textShadow: "2px 0 var(--pink), -2px 0 cyan",
+    ease: "power4.inOut",
+  }).to(element, {
+    duration: 0.1,
+    skewX: 0,
+    x: 0,
+    scale: 1,
+    color: "var(--pink)",
+    textShadow: "none",
+    ease: "power4.inOut",
+  });
+
+  setTimeout(() => triggerGlitch(element), gsap.utils.random(10000, 15000));
 }
