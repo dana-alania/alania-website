@@ -44,10 +44,20 @@
 
 .particle {
   position: absolute;
-  background: #ff2af1;
+  background-color: rgba(255, 42, 241, 0.7);
   border-radius: 50%;
-  opacity: 0;
   pointer-events: none;
+
+  box-shadow:
+    0 0 2px rgba(255, 255, 255, 0.5),
+    0 0 10px var(--pink),
+    0 0 18px var(--pink),
+    0 0 25px rgba(255, 42, 241, 0.3);
+
+  filter: blur(1px);
+
+  willchange: transform, opacity;
+  opacity: 0;
 }
 
 .pink-blob {

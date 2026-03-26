@@ -162,12 +162,11 @@ svg.lucide {
 
 .works-scroll-area {
   flex-grow: 1;
-  height: calc(100vh - 275px);
+  height: calc(100vh - 375px);
   overflow-y: auto;
   overflow-x: hidden;
   padding-top: 20px;
   padding-right: 15px;
-
   scrollbar-width: thin;
   scrollbar-color: var(--pink) transparent;
 }

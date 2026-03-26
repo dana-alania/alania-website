@@ -52,122 +52,76 @@
       <div class="bio-header">
         <h1 class="main-title">DANA ALANIA</h1>
       </div>
-
-      <div class="bio-scroll-container">
-        <div class="bio-content">
-          <h3 class="toggle-header">FRONTEND & DESIGN</h3>
-          <section class="bio-group">
-            <p>HTML5 / CSS3 / BOOTSTRAP / GSAP</p>
-            <p>JAVASCRIPT / REACT / FIGMA / UI/UX</p>
-          </section>
-
-          <h3 class="toggle-header">BACKEND & DATABASE</h3>
-          <section class="bio-group">
-            <p>NODE.JS / EXPRESS.JS / LARAVEL / POSTMAN</p>
-            <p>MONGODB / NOSQL / MYSQL / POSTGRES / SQLITE</p>
-            <p>FIREBASE / SUPABASE / JWT / SQL</p>
-          </section>
-
-          <h3 class="toggle-header">MOBILE DEVELOPMENT</h3>
-          <section class="bio-group">
-            <p>FLUTTER / FLUTTERFLOW / REACT NATIVE</p>
-          </section>
-
-          <h3 class="toggle-header">PROGRAMMING & TOOLS</h3>
-          <section class="bio-group">
-            <p>JAVA / C++ / C# / PYTHON / QT / CMAKE</p>
-            <p>GITHUB / NETBEANS</p>
-          </section>
-
-          <h3 class="toggle-header">CERTIFICATIONS</h3>
-          <section class="bio-group">
-            <p><strong>CYBERSECURITY FUNDAMENTALS</strong></p>
-            <p>ATTAINED MARCH, 2026</p>
-            <p>
-              ISSUED BY
-              <a
-                href="https://www.credly.com/badges/3b7e4c35-ec58-4ea5-bda0-9fe8a29c648f/public_url"
-                target="_blank"
-                rel="noopener noreferrer"
-                style="color: #ff2af1"
-                >IBM SKILLSBUILD</a
-              >
-            </p>
-            <br />
-            <p>
-              <strong>INTRODUCTION TO CYBERSECURITY</strong>
-            </p>
-            <p>ATTAINED MARCH, 2026</p>
-            <p>
-              ISSUED BY
-              <a
-                href="https://www.credly.com/badges/10d73554-4adb-489d-b025-9e1087f16613/public_url"
-                target="_blank"
-                rel="noopener noreferrer"
-                style="color: #ff2af1"
-                >CISCO</a
-              >
-            </p>
-          </section>
-
-          <h3 class="toggle-header">RELEVANT ACHIEVEMENTS</h3>
-          <section class="bio-group">
-            <p><strong>BEST USER EXPERIENCE</strong></p>
-            <p>RECEIVED FEBRUARY, 2026</p>
-            <p>HACKATHON JAM 2026</p>
-            <br />
-            <p>
-              <strong>SUBJECT PROFICIENCY IN INFORMATION MANAGEMENT</strong>
-            </p>
-            <p>RECEIVED JUNE, 2023</p>
-            <p>CIIT SENIOR HIGH SCHOOL</p>
-            <br />
-            <p>
-              <strong
-                >SUBJECT PROFICIENCY IN SCRIPWRITING AND STORYBOARDING</strong
-              >
-            </p>
-            <p>RECEIVED JUNE, 2023</p>
-            <p>CIIT SENIOR HIGH SCHOOL</p>
-            <br />
-            <p>
-              <strong
-                >SUBJECT PROFICIENCY IN APPLICATION DEVELOPMENT AND EMERGING
-                TECHNOLOGIES</strong
-              >
-            </p>
-            <p>RECEIVED AUGUST, 2022</p>
-            <p>CIIT SENIOR HIGH SCHOOL</p>
-          </section>
-
-          <h3 class="toggle-header">EDUCATIONAL BACKGROUND</h3>
-          <section class="bio-group">
-            <p>
-              <strong
-                >CIIT COLLEGE OF INNOVATION AND INTEGRATED TECHNOLOGY</strong
-              >
-            </p>
-            <p>2023 - PRESENT</p>
-            <p>BACHELOR OF SCIENCE IN COMPUTER SCIENCE</p>
-            <br />
-            <p><strong>CIIT SENIOR HIGH SCHOOL</strong></p>
-            <p>2021- 2023</p>
-            <p>PROGRAMMING STRAND</p>
-          </section>
-
-          <h3 class="toggle-header">MISCELLANEOUS SKILLS</h3>
-          <section class="bio-group">
-            <p>
-              <strong>GAME DESIGN AND DEVELOPMENT</strong>
-            </p>
-            <p>UNITY</p>
-            <p>TWINE</p>
-            <p>STORYBOARDING</p>
-            <p>SCRIPTWRITING</p>
-          </section>
+      <section class="os-interface">
+        <div class="desktop">
+          <div class="icon" data-file="frontend">
+            <div class="cyber-icon-box"></div>
+            <span>Frontend & Design</span>
+          </div>
+          <div class="icon" data-file="backend">
+            <div class="cyber-icon-box"></div>
+            <span>Backend & Database</span>
+          </div>
+          <div class="icon" data-file="mobile">
+            <div class="cyber-icon-box"></div>
+            <span>Mobile Development</span>
+          </div>
+          <div class="icon" data-file="programming">
+            <div class="cyber-icon-box"></div>
+            <span>PROGRAMMING AND TOOLS</span>
+          </div>
+          <div class="icon" data-file="certifications">
+            <div class="cyber-icon-box"></div>
+            <span>CERTIFICATIONS</span>
+          </div>
+          <div class="icon" data-file="achievements">
+            <div class="cyber-icon-box"></div>
+            <span>RELEVANT ACHIEVEMENTS</span>
+          </div>
+          <div class="icon" data-file="education">
+            <div class="cyber-icon-box"></div>
+            <span>EDUCATIONAL BACKGROUND</span>
+          </div>
+          <div class="icon" data-file="misc">
+            <div class="cyber-icon-box"></div>
+            <span>MISCELLANEOUS</span>
+          </div>
         </div>
-      </div>
+
+        <div id="os-window" class="window hidden">
+          <div class="window-header">
+            <span id="window-title">File Viewer</span>
+            <div class="window-controls">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+          </div>
+          <div class="window-body" id="window-content"></div>
+
+          <div class="window-footer">
+            <div class="loading-bar-container">
+              <div id="loading-bar-fill"></div>
+            </div>
+            <span id="loading-percent">0%</span>
+          </div>
+        </div>
+      </section>
     </main>
+
+    <div class="system-hud">
+      <div class="hud-item">
+        <span class="hud-label">CPU</span>
+        <div class="hud-bar"><div id="cpu-fill"></div></div>
+      </div>
+      <div class="hud-item">
+        <span class="hud-label">RAM</span>
+        <div class="hud-bar"><div id="ram-fill"></div></div>
+      </div>
+      <div class="hud-item">
+        <span id="os-clock" class="hud-clock">00:00:00</span>
+      </div>
+    </div>
 
     <footer class="social-bar">
       <div class="pink-line"></div>
@@ -197,11 +151,15 @@
     <script src="https://unpkg.com/lucide@0.473.0"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Draggable.min.js"></script>
+
     <script>
       lucide.createIcons();
 
       window.addEventListener("load", () => {});
     </script>
     <script src="./assets/js/main.js"></script>
+    <script src="./assets//js/bio.js"></script>
   </body>
 </html>

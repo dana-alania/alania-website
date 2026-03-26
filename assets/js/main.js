@@ -1,3 +1,11 @@
+let mouseX = 0;
+let mouseY = 0;
+
+window.addEventListener("mousemove", (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+});
+
 document.addEventListener("DOMContentLoaded", () => {
   const hamburger = document.getElementById("hamburger");
   const navLinks = document.getElementById("nav-links");
@@ -140,6 +148,35 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => triggerGlitch(title), 5000);
   }
 
+  if (document.querySelector(".icon")) {
+    entranceTl.from(
+      ".icon",
+      {
+        y: 40,
+        autoAlpha: 0,
+        stagger: 0.1,
+        duration: 0.5,
+        ease: "back.out(1.2)",
+        clearProps: "all",
+      },
+      "socialBio",
+    );
+  }
+
+  if (document.querySelector(".window")) {
+    entranceTl.from(
+      ".window",
+      {
+        scale: 0.9,
+        autoAlpha: 0,
+        y: 20,
+        duration: 1,
+        ease: "expo.out",
+      },
+      "socialBio+=0.5",
+    );
+  }
+
   hamburger.addEventListener("click", () => {
     if (!menuTl) return;
     hamburger.classList.toggle("active");
@@ -216,27 +253,37 @@ document.addEventListener("DOMContentLoaded", () => {
 function createParticle(container) {
   const p = document.createElement("div");
   p.className = "particle";
-  const size = Math.random() * 2 + 1;
+
+  const size = Math.random() * 4 + 1;
+
   Object.assign(p.style, {
     width: `${size}px`,
     height: `${size}px`,
     left: `${Math.random() * 100}%`,
     top: `${Math.random() * 100}%`,
-    willChange: "transform",
+    filter: `blur(${Math.random() * 1.5 + 0.5}px)`,
+    willChange: "transform, opacity",
   });
+
   container.appendChild(p);
   animateParticle(p);
 }
 
 function animateParticle(el) {
   gsap.to(el, {
-    x: "random(-60, 60)",
-    y: "random(-60, 60)",
-    opacity: "random(0.3, 0.3)",
-    duration: "random(15, 25)",
+    x: "random(-100, 100)",
+    y: "random(-100, 100)",
+    duration: "random(10, 20)",
     ease: "none",
-    force3D: true,
     onComplete: () => animateParticle(el),
+  });
+
+  gsap.to(el, {
+    opacity: "random(0.05, 0.6)",
+    repeat: -1,
+    yoyo: true,
+    duration: "random(1.5, 4)",
+    ease: "sine.inOut",
   });
 }
 
@@ -342,3 +389,73 @@ function triggerGlitch(element) {
 
   setTimeout(() => triggerGlitch(element), gsap.utils.random(10000, 15000));
 }
+
+document.querySelectorAll(".btn-neon, .social-icons a").forEach((btn) => {
+  btn.addEventListener("mousemove", (e) => {
+    const rect = btn.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+
+    gsap.to(btn, {
+      x: x * 0.3,
+      y: y * 0.3,
+      duration: 0.3,
+      ease: "power2.out",
+    });
+  });
+
+  btn.addEventListener("mouseleave", () => {
+    gsap.to(btn, { x: 0, y: 0, duration: 0.5, ease: "elastic.out(1, 0.3)" });
+  });
+});
+
+function scrambleText(element) {
+  const originalText = element.innerText;
+  const chars = "ABCDEFGHJKMNPQRSTUVXYZ0123456789@#$%&*";
+  let iteration = 0;
+
+  const interval = setInterval(() => {
+    element.innerText = originalText
+      .split("")
+      .map((letter, index) => {
+        if (index < iteration) return originalText[index];
+        return chars[Math.floor(Math.random() * chars.length)];
+      })
+      .join("");
+
+    if (iteration >= originalText.length) clearInterval(interval);
+    iteration += 1 / 3;
+  }, 30);
+}
+
+document.querySelectorAll(".nav-links a").forEach((link) => {
+  link.addEventListener("mouseenter", () => scrambleText(link));
+});
+
+gsap.ticker.add(() => {
+  const particles = document.querySelectorAll(".particle");
+
+  particles.forEach((p) => {
+    const rect = p.getBoundingClientRect();
+    const pX = rect.left + rect.width / 2;
+    const pY = rect.top + rect.height / 2;
+
+    const dx = mouseX - pX;
+    const dy = mouseY - pY;
+    const distance = Math.sqrt(dx * dx + dy * dy);
+
+    if (distance < 100) {
+      const force = (100 - distance) / 100;
+      const moveX = dx * force * -0.5;
+      const moveY = dy * force * -0.5;
+
+      gsap.to(p, {
+        x: `+=${moveX}`,
+        y: `+=${moveY}`,
+        duration: 0.2,
+        ease: "power1.out",
+        overwrite: "auto",
+      });
+    }
+  });
+});
